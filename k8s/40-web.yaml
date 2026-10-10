@@ -30,3 +30,11 @@ spec:
                 secretKeyRef:
                   name: postgres-auth
                   key: password
+          livenessProbe:
+            httpGet:
+              port: http
+              path: /healthz
+          readinessProbe:
+            httpGet:
+              port: http
+              path: /readyz

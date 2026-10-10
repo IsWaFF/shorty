@@ -24,3 +24,9 @@ spec:
           envFrom:
             - configMapRef:
                 name: web-config
+          env:
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-auth
+                  key: password

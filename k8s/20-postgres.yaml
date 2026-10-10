@@ -40,3 +40,15 @@ spec:
                 secretKeyRef:
                   name: postgres-auth
                   key: password
+          startupProbe:
+            failureThreshold: 5
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 3
+            exec:
+              command:
+                - "pg_isready"
+          livenessProbe:
+            exec:
+              command:
+                - "pg_isready"

@@ -52,3 +52,9 @@ spec:
             exec:
               command:
                 - "pg_isready"
+          resources:
+            requests:
+              memory: 250Mi
+              cpu: 256m
+            limits:
+              memory: 512Mi

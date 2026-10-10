@@ -35,3 +35,8 @@ spec:
                 configMapKeyRef:
                   name: web-config
                   key: DB_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-auth
+                  key: password

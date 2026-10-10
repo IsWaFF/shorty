@@ -9,3 +9,4 @@ data:
   DB_PORT: "5432"
   DB_NAME: "shorty"
   DB_USER: "shorty"
+  APP_TITLE: "shorty"

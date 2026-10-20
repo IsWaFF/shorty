@@ -19,6 +19,7 @@ metadata:
   name: postgres
   namespace: shorty
 spec:
+  clusterIP: None
   selector:
     app: postgres
   ports:

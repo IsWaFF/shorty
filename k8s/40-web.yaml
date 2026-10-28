@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: gunicorn
-          image: ghcr.io/iswaff/shorty:0.1
+          image: ghcr.io/iswaff/shorty:4e17dcc
           ports:
             - name: http
               containerPort: 8000

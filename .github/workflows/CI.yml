@@ -18,5 +18,6 @@ jobs:
                   password: ${{ secrets.GITHUB_TOKEN }}
             - name: build dockerfile
               run: |
-                  docker build -t ghcr.io/iswaff/shorty:${GITHUB_SHA::7} .
+                  docker build -t ghcr.io/iswaff/shorty:${GITHUB_SHA::7} \
+                      --label org.opencontainers.image.source=https://github.com/IsWaFF/shorty .
                   docker push ghcr.io/iswaff/shorty:${GITHUB_SHA::7}

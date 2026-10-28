@@ -1,0 +1,11 @@
+name: ci
+on:
+    push:
+        branches: [main]
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v7
+            - name: build dockerfile
+              run: docker build -t shorty .

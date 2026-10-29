@@ -1,5 +1,7 @@
 # shorty
 
+![ci](https://github.com/IsWaFF/shorty/actions/workflows/CI.yml/badge.svg)
+
 a link shortener I use as a playground for running an app the way it's run in prod.
 
 the app itself (flask + postgres, ~150 lines in `app.py`) came ready-made with the task, I didn't write it and it's not the point.

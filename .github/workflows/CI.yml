@@ -5,6 +5,8 @@ on:
             - README.md
             - learn/**
         branches: [main]
+    pull_request:
+        branches: [main]
 permissions:
     contents: read
     packages: write

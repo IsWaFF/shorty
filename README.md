@@ -80,7 +80,23 @@ open http://localhost:8080 or:
 curl -X POST localhost:8080/api/links -H 'content-type: application/json' -d '{"url": "https://example.com"}'
 ```
 
-port-forward sticks to one pod, so "served by" won't change on refresh. to see the service balancing you need to go through ingress (todo).
+port-forward sticks to one pod, so "served by" won't change on refresh. to see the balancing you need to go through ingress.
+
+## ingress
+
+traefik is one per cluster, so it isn't in `k8s/`. only the rule is, `k8s/60-ingress.yaml`. stop the port-forward to web first, 8080 is taken
+
+```sh
+helm install traefik oci://ghcr.io/traefik/helm/traefik --version 41.6.0 -n traefik --create-namespace --set service.spec.type=ClusterIP --wait
+kubectl -n traefik port-forward svc/traefik 8080:80
+```
+
+open http://shorty.localhost:8080. the proxy picks a pod for every request, so "served by" changes on refresh
+
+- clusterip because the chart's default is `LoadBalancer`, and on kind nothing gives it an ip
+- wrong host -> 404 from traefik, no rule matched
+- delete the ingress -> traefik is alive but answers 404
+- kill traefik -> nothing answers, the ingress is still in etcd. the controller is in the traffic path, controller-manager isn't
 
 ## things that bit me
 
@@ -91,7 +107,7 @@ port-forward sticks to one pod, so "served by" won't change on refresh. to see t
 ## todo
 
 - [ ] ci: build on every push, push the image to ghcr, tag = commit sha
-- [ ] ingress instead of port-forward
+- [x] ingress instead of port-forward
 - [ ] helm chart with dev/prod values
 - [ ] `securityContext` so the restricted pod security policy stops warning
 - [ ] run it for real at shorty.iswaff.com through a cloudflare tunnel

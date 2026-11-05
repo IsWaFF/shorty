@@ -5,6 +5,8 @@ venv/
 .env
 .env.*
 
+.vscode
+
 # shorty task description (not part of the project)
 TASK.md
 

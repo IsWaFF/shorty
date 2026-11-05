@@ -2,11 +2,10 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: shorty-ingress
-  namespace: shorty
 spec:
   ingressClassName: traefik
   rules:
-    - host: shorty.localhost
+    - host: dev.shorty.localhost
       http:
         paths:
           - path: /

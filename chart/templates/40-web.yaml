@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: shorty-gunicorn
-  namespace: shorty
   labels:
     app: gunicorn
 spec:
